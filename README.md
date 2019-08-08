@@ -1,1 +1,1 @@
-# LEDA-Activities
+# LEDA
