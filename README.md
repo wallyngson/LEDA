@@ -9,3 +9,5 @@ Repository for the practical activities of the discipline Data Structure, of the
 Language used: **Java** (https://www.oracle.com/technetwork/java/javase/downloads/index-jsp-138363.html);
 
 Unit tests: **JUnit 5** (https://junit.org/junit5/);
+
+Submission: **Maven** (http://maven.apache.org/);
