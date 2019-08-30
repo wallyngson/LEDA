@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2019-08-29T14:40:12.447-0300</date>
+  <logger>WALLYNGSON ELIEZER DOS SANTOS GUEDES</logger>
+  <level>FINE</level>
+  <message>File 117110835-WALLYNGSON ELIEZER DOS SANTOS GUEDES.zip was received. It was sent by WALLYNGSON ELIEZER DOS SANTOS GUEDES from IP 150.165.42.128 at 29-08-2019 14*40*12</message>
+</record>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2019-08-29T23:05:54.059-0300</date>
+  <logger>WALLYNGSON ELIEZER DOS SANTOS GUEDES</logger>
+  <level>FINE</level>
+  <message>File 117110835-WALLYNGSON ELIEZER DOS SANTOS GUEDES.zip was received. It was sent by WALLYNGSON ELIEZER DOS SANTOS GUEDES from IP 192.168.0.7 at 29-08-2019 23*05*54</message>
+</record>
