@@ -17,46 +17,65 @@ public class ExtendedCountingSort extends AbstractSorting<Integer> {
 		
 		if (Util.isValid(array, leftIndex, rightIndex)) {
 			
-			int maximoValue = 0;
-			int minimoValue = Integer.MAX_VALUE;
-			for (int i = leftIndex; i <= rightIndex; i++) {
-				if (array[i] > maximoValue)
-					maximoValue = array[i];
-				if (array[i] < minimoValue)
-					minimoValue = array[i];
-			}
-			maximoValue++;
+			int max = this.getMaximo(array, leftIndex, rightIndex);
+			int min = this.getMinimo(array, leftIndex, rightIndex);
 			
-			if(minimoValue < 0)
-				minimoValue = Math.abs(minimoValue);
+			if(min < 0)
+				min = Math.abs(min);
 			else
-				minimoValue = -minimoValue;
+				min = -min;
 			
+			max += min;
 			
-			maximoValue += minimoValue;
-			
-			int[] arrayAuxiliar = new int[maximoValue];
-			
+			int[] aux = new int[max];
+			int[] ordenado = new int[array.length];
+
+			// contando as ocorrências...
 			for (int i = leftIndex; i <= rightIndex; i++) {
-				arrayAuxiliar[array[i] + minimoValue] += 1;
+				aux[array[i] + min] += 1;
 			}
 			
-			arrayAuxiliar[0] += leftIndex;
-			for (int i = 1; i < arrayAuxiliar.length; i++) {
-				arrayAuxiliar[i] += arrayAuxiliar[i - 1];
+			aux[0] += leftIndex;
+
+			// preenchendo o array auxiliar...
+			for (int i = 1; i < aux.length; i++) {
+				aux[i] += aux[i - 1];
 			}
 			
-			int[] arrayOrdenado = new int[array.length];
-			
+
 			for (int i = rightIndex; i >= leftIndex; i--) {
-				
-				arrayOrdenado[arrayAuxiliar[array[i] + minimoValue] - 1] = array[i];
-				arrayAuxiliar[array[i] + minimoValue] -= 1;
+				ordenado[aux[array[i] + min] - 1] = array[i];
+				aux[array[i] + min] -= 1;
 			}
 			
+			// atribuindo os números ordenados no array original...
 			for (int i = leftIndex; i <= rightIndex; i++) {
-				array[i] = arrayOrdenado[i];
+				array[i] = ordenado[i];
 			}
 		}
+	}
+	
+	// encontrando o menor valor do array
+	private int getMinimo(Integer[] array, int leftIndex, int rightIndex) {
+		int min = Integer.MAX_VALUE;
+		
+		for (int i = 0; i < array.length; i++) {
+			if (min > array[i])
+				min = array[i];
+		}
+		
+		return min;
+	}
+	
+	// encontrando o maior valor do array
+	private int getMaximo(Integer[] array, int leftIndex, int rightIndex) {
+		int max = 0;
+		
+		for (int i = 0; i < array.length; i++) {
+			if (max < array[i])
+				max = array[i];
+		}
+		
+		return ++max;
 	}
 }
