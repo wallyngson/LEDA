@@ -43,6 +43,10 @@ public class StackImpl<T> implements Stack<T> {
 		if (this.isEmpty())
 			throw new StackUnderflowException();
 		
+		return remove();
+	}
+	
+	public T remove() {
 		T aux = this.array[top];
 		this.array[top] = null;
 		this.top--;
