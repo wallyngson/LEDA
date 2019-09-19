@@ -37,8 +37,8 @@ public class StudentStackTest {
 		stack3 = null;
 	}
 
-	// MÉTODOS DE TESTE
-	@Test
+	 // MÉTODOS DE TESTE
+	 @Test
 	public void testTop() {
 		assertEquals(new Integer(3), stack1.top());
 	}
@@ -67,7 +67,7 @@ public class StudentStackTest {
 	@Test(expected = StackOverflowException.class)
 	public void testPushComErro() throws StackOverflowException {
 		stack1.push(new Integer(5)); // levanta excecao apenas se o tamanhonao
-										// permitir outra insercao
+									// permitir outra insercao
 	}
 
 	@Test
