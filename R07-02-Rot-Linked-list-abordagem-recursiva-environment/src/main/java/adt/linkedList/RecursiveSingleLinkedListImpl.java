@@ -29,35 +29,70 @@ public class RecursiveSingleLinkedListImpl<T> implements LinkedList<T> {
 	@Override
 	public T search(T element) {
 		if (elementValid(element)) {
-
-			if (!isEmpty()) {
-
+			
+			if (this.isEmpty())
+				return null;
+			
+			else {
+				
 				if (this.data.equals(element))
 					return this.data;
-
-				this.next.search(element);
-
+				
+				else return this.next.search(element);
 			}
-		}
-		return null;
+			
+		} return null;
 	}
 
 	@Override
 	public void insert(T element) {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Not implemented yet!");
+		if (elementValid(element)) {
+			if (this.isEmpty()) {
+				this.setData(element);
+				this.setNext(new RecursiveSingleLinkedListImpl<T>());
+			}
+			
+			else {
+				this.next.insert(element);
+			}
+		}
 	}
 
 	@Override
 	public void remove(T element) {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Not implemented yet!");
+		if (elementValid(element)) {
+			
+			if (!isEmpty()) {
+				
+				if (this.data.equals(element)) {
+					this.setData(this.next.getData());
+					this.setNext(this.next.next);
+				}
+				
+				else this.next.remove(element);
+				
+			}
+		}
 	}
 
 	@Override
 	public T[] toArray() {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Not implemented yet!");
+		@SuppressWarnings("unchecked")
+		T[] array = (T[]) new Object[this.size()];
+		
+		this.createArray(array, new RecursiveSingleLinkedListImpl<T>(this.data, this.next), 0);
+		
+		return array;
+		
+	}
+	
+	private void createArray(T[] arr, RecursiveSingleLinkedListImpl<T> node, int count) {
+		if (node.getData() != null) {
+			arr[count] = node.getData();
+			
+			this.createArray(arr, node.getNext(), ++count);
+		}
+		
 	}
 
 	public T getData() {
@@ -77,6 +112,6 @@ public class RecursiveSingleLinkedListImpl<T> implements LinkedList<T> {
 	}
 
 	private boolean elementValid(T element) {
-		return element == null;
+		return element != null;
 	}
 }
